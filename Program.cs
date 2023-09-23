@@ -18,7 +18,7 @@ namespace SparseConverter
                 return;
             }
 
-            string inputPath = args[1];
+            string inputPath =  args[1] ;
             if (String.Equals(args[0], "/compress", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (args.Length != 4)
@@ -46,7 +46,10 @@ namespace SparseConverter
                     PrintHelp();
                     return;
                 }
-                string outputPath = args[2];
+                string outputPath = args[2] ;
+
+                Console.WriteLine("Directory of images is: {0}", inputPath);
+
                 List<string> sparseList = GetSparseList(inputPath);
                 Decompress(sparseList, outputPath);
             }
@@ -59,6 +62,7 @@ namespace SparseConverter
                 PrintHelp();
             }
         }
+
 
         private static void PrintHelp()
         {
@@ -149,13 +153,7 @@ namespace SparseConverter
             Console.WriteLine("input path {0}", inputPath);
 
             List<string> sparseList = new List<string>();
-            for(int i=0; i<11; i++)
-            {
-                String file = Path.Combine("./", "super.img." + i.ToString());
-                Console.WriteLine(file);
-                sparseList.Add(file);
-
-            }
+            sparseList = Funcoes.FuncoesUtils.ListAllFilesInDirectoryAndSubdirectories(Path.GetDirectoryName(inputPath), inputPath);
 
             Console.WriteLine("sparseList {0}\n\n", sparseList.Count);
 
