@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using Utilities;
 
+
 namespace SparseConverter
 {
     class Program
@@ -63,6 +64,7 @@ namespace SparseConverter
         {
             Console.WriteLine("SparseConverter v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             Console.WriteLine("Author: Tal Aloni (tal.aloni.il@gmail.com)");
+            Console.WriteLine("Moded By: Gilmar S.S ");
             Console.WriteLine("About:");
             Console.WriteLine("This software is designed to create / decompress compressed ext4 file system");
             Console.WriteLine("sparse image format, which is defined by AOSP.");
@@ -144,31 +146,31 @@ namespace SparseConverter
 
         private static List<string> GetSparseList(string inputPath)
         {
+            Console.WriteLine("input path {0}", inputPath);
+
             List<string> sparseList = new List<string>();
-            sparseList.Add(inputPath);
-            if (inputPath.EndsWith("0") || inputPath.EndsWith("1"))
+            for(int i=0; i<11; i++)
             {
-                int firstSparseIndex = Convert.ToInt32(inputPath.Substring(inputPath.Length - 1));
-                string prefix = inputPath.Substring(0, inputPath.Length - 1);
-                int sparseIndex = firstSparseIndex + 1;
-                string sparsePath = prefix + sparseIndex.ToString();
-                while (File.Exists(sparsePath))
-                {
-                    sparseList.Add(sparsePath);
-                    sparseIndex++;
-                    sparsePath = prefix + sparseIndex.ToString();
-                }
+                String file = Path.Combine("./", "super.img." + i.ToString());
+                Console.WriteLine(file);
+                sparseList.Add(file);
+
             }
+
+            Console.WriteLine("sparseList {0}\n\n", sparseList.Count);
 
             return sparseList;
         }
 
         private static void Decompress(List<string> sparseList, string outputPath)
         {
+            Console.WriteLine("output path {0}\n\n", outputPath);
+
+            
             FileStream output;
             try
             {
-                output = File.Open(outputPath, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
+                output = File.Open(  outputPath, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
                 output.SetLength(0);
             }
             catch (IOException)
@@ -182,9 +184,10 @@ namespace SparseConverter
                 return;
             }
 
-            Console.WriteLine("Output: {0}", outputPath);
+            Console.WriteLine("iniciando merger: {0}", outputPath);
             foreach (string sparsePath in sparseList)
             {
+                Console.WriteLine("sparseList {0}\n", sparsePath);
                 FileStream input;
                 try
                 {
