@@ -152,6 +152,8 @@ namespace SparseConverter
         {
             Console.WriteLine("input path {0}", inputPath);
 
+            Console.WriteLine("Directory name {0}", Path.GetDirectoryName(inputPath));
+
             List<string> sparseList = new List<string>();
             sparseList = Funcoes.FuncoesUtils.ListAllFilesInDirectoryAndSubdirectories(Path.GetDirectoryName(inputPath), inputPath);
 

@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{D5CA65C8-4857-4AC6-93A1-107CBC49DE19}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Utilities/Funcoes.cs">
     <Files>
-      <File FileName="Program.cs" Line="152" Column="10" />
+      <File FileName="Program.cs" Line="158" Column="67" />
+      <File FileName="Utilities/Funcoes.cs" Line="9" Column="36" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +12,9 @@
               <Node name="References" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="SparseImage" expanded="True" />
-              <Node name="Program.cs" selected="True" />
+              <Node name="Utilities" expanded="True">
+                <Node name="Funcoes.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

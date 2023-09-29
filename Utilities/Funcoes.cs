@@ -18,14 +18,17 @@ namespace Funcoes
             }
             DirectoryInfo sourceDir = new DirectoryInfo(rootDirPath);
 
-            FileInfo[] files = sourceDir.GetFiles(searchPattern);  //Get only files which you need to work with.
-            foreach (var myFile in files)
+
+            FileInfo[] files = sourceDir.GetFiles(searchPattern );  //Get only files which you need to work with.
+
+
+            foreach (var myFile in files )
             {
                 try
                 {
-                    Console.WriteLine("Filename:" + myFile.FullName);
+                    Console.WriteLine("Filename:" + myFile.Name);
                     Console.WriteLine("Filesize:" + myFile.Length);
-                    sparseList.Add(myFile.FullName);
+                    sparseList.Add(myFile.Name);
                 }
                 catch (Exception ex)
                 {
